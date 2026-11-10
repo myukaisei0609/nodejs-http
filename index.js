@@ -6,7 +6,6 @@ const pug = require('pug');
 
 const server = http
   .createServer((req, res) => {
-    const now = new Date();
     console.info(
       `[${now}] 次のIPアドレスからアクセスがあったよ ${req.socket.remoteAddress}`
     );
@@ -80,7 +79,7 @@ const server = http
             const answer = new URLSearchParams(rawData);
             const body = `${answer.get('name')}さんは${answer.get('favorite')}に投票しました`;
 
-            console.info(`[${now}] ${body}`);
+            console.info(`${body}`);
 
             res.writeHead(200, {
               'Content-Type': 'text/html; charset=utf-8'
@@ -99,10 +98,10 @@ const server = http
     }
   })
   .on('error', e => {
-    console.error(`[${new Date()}] Server Error`, e);
+    console.error(`Server Error`, e);
   })
   .on('clientError', e => {
-    console.error(`[${new Date()}] Client Error`, e);
+    console.error(`Client Error`, e);
   });
 
 const port = process.env.PORT || 8000;
