@@ -7,8 +7,8 @@ const pug = require('pug');
 const server = http
   .createServer((req, res) => {
     console.info(
-      `[${now}] 次のIPアドレスからアクセスがあったよ ${req.socket.remoteAddress}`
-    );
+  `${now} 次のIPアドレスからアクセスがあったよ ${req.socket.remoteAddress}`
+);
 
     switch (req.method) {
       case 'GET':
